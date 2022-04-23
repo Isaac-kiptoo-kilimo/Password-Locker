@@ -25,6 +25,9 @@ def del_account(account):
 
 def main():
     print("Hello enter you Details to create an account")
+    user_name=input()
+    print(f"Hello {user_name}. what would you like to do?")
+    print("\n")
 
 if __name__=="__main__":
     main()
