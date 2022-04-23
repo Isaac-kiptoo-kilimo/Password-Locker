@@ -1,6 +1,7 @@
 #!/usr/bin/python3.8
 
 
+import email
 from details import Account
 
 
@@ -23,8 +24,9 @@ def delete_account(account):
     '''
     account.delete_account()
 
+print()
 print('PASSWORD LOCKER APPLICATION')
-print("\n")
+print("")
 
 def main():
     print("Hello welcome,Enter your name to create an account")
@@ -39,6 +41,21 @@ def main():
         if short_code== 'ca':
             print('New Account')
             print('-'*15)
+
+            print('First Name....')
+            f_name=input()
+
+            print("Last Name....")
+            l_name=input()
+
+            print("Username ....")
+            username=input()
+
+            print("Email ....")
+            email=input()
+
+            print("Password ....")
+            password=input()
 
         break
         
