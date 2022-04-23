@@ -17,7 +17,7 @@ def save_accounts(account):
     '''
     account.save_account()
 
-def del_account(account):
+def delete_account(account):
     '''
     Function to delete an account
     '''
@@ -34,7 +34,14 @@ def main():
 
     while True:
         print("Use these short codes : ca - create a new account,gp -generate new password ,cpg - get generated password by computor, da - display accounts,dp -display old password, fa -find an account, ex -exit the account list ")
+        
+        short_code=input().lower()
+        if short_code== 'ca':
+            print('New Account')
+            print('-'*15)
+
         break
+        
 
 if __name__=="__main__":
     main()
