@@ -36,5 +36,9 @@ class DetailsTest(unittest.TestCase):
         self.new_account.delete_account()
         self.assertEqual(len(Detail.account_list),1)
 
+    def test_display_account(self):
+        self.assertEqual(Detail.display_accounts(),Detail.account_list)
+
+
 if __name__=="__main__":
     unittest.main()

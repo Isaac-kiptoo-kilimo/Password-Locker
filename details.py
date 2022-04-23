@@ -17,6 +17,8 @@ class Detail:
 
     def delete_account(self):
         self.account_list.remove(self)
-    
 
-print("hello world")
+    @classmethod
+    def display_accounts(cls):
+        return cls.account_list
+
