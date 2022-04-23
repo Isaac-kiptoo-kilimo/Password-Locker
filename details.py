@@ -1,6 +1,6 @@
 import unittest
 
-class Detail:
+class Account:
 
     account_list=[]
     def __init__(self,first_name,last_name,username,      
