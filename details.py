@@ -14,7 +14,9 @@ class Detail:
     def save_account(self):
         self.account_list.append(self)
 
-    def tearDown(self):
-        Detail.account_list=[]
+
+    def delete_account(self):
+        self.account_list.remove(self)
+    
 
 print("hello world")
