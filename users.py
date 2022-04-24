@@ -1,5 +1,5 @@
 import unittest
-
+from credentials import Credentials
 class User:
 
     users = [
@@ -26,7 +26,7 @@ class User:
         self.username=username
         self.pasaword=password
         self.email=email
-        
+
         pass
 
     @classmethod
