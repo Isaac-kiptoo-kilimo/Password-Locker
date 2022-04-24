@@ -28,6 +28,10 @@ def display_accounts():
     
     return Account.display_accounts()
 
+def find_account(username):
+  
+    return Account.find_by_username(username)
+
 def check_existing_accounts(username):
     
     return Account.account_exist(username)

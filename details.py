@@ -22,3 +22,8 @@ class Account:
     def display_accounts(cls):
         return cls.account_list
 
+    @classmethod
+    def find_by_username(cls,username):
+        for account in cls.accounts_list:
+            if account.username == username:
+                return account
