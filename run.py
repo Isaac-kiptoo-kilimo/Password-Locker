@@ -117,6 +117,24 @@ def listUsers():
     
     return Account.display_accounts()
 
+def loginUser():
+    print("\nWelcome to the login page.\nEnter your login details to get authenticated.")
+    username = input("Enter your username:      ")
+    password = input("Enter your password:      ")
+
+    res = User.authenticateUser(
+        {
+            "username": username,
+            "password": password
+        }
+    )
+
+    if res["statusCode"] == 200:
+        print(res["message"])
+    else:
+        print(res["message"])
+
+
 def find_account(username):
   
     return Account.find_by_username(username)
