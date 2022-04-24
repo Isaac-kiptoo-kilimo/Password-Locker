@@ -134,6 +134,26 @@ def loginUser():
     else:
         print(res["message"])
 
+def logoutUser():
+    res = User.unAuthenticateUser()
+    print(res["message"])
+
+
+def getLoggedInUser():
+    res = User.getLoggedInUser()
+    if res["statusCode"] == 200:
+        print2emptylines()
+        print("The logged in user is: ")
+        user = res["data"]
+        print(f"Fullname:     {user['fullname']}")
+        print(f"Username:     {user['username']}")
+        print(f"Email:        {user['email']}")
+        print(f"Password:     {user['password']}")
+        print2emptylines()
+    else:
+        print(res["message"])
+
+
 
 def find_account(username):
   
