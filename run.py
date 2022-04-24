@@ -49,13 +49,18 @@ def main():
             l_name=input()
 
             print("Username ....")
-            username=input()
+            username_=input()
 
             print("Email ....")
-            email=input()
+            email_=input()
 
             print("Password ....")
-            password=input()
+            password_=input()
+
+            save_accounts(create_account(f_name,l_name,username_,email_,password_)) # create and save new account.
+            print ('\n')
+            print(f"New account {f_name} {l_name} created")
+            print ('\n')
 
         break
         
