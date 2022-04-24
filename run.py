@@ -79,6 +79,17 @@ def main():
                 print('\n')
                 print("You dont seem to have any accounts yet")
                 print('\n')
+
+        elif short_code=="fa":
+            print("Enter the username you want to search")
+            search_username=input()
+            if check_existing_accounts(search_username):
+                search_account = find_account(search_username)
+                print(f"{search_account.first_name} {search_account.last_name}")
+                print('-' * 20)
+
+                print(f"Phone number.......{search_account.username}")
+                print(f"Email address.......{search_account.email}")
                 break
         
         else:
