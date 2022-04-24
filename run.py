@@ -1,7 +1,9 @@
 #!/usr/bin/python3.8
 
 import email
-from details import Account
+# from details import Account
+from users import User
+from credentials import Credentials
 
 
 def createUser():
@@ -72,7 +74,14 @@ def save_accounts(account):
     '''
     account.save_account()
 
-def delete_account(account):
+def deleteUser():
+    user_id = input("Enter id of user you want to delete:     ")
+    res = User.deleteUser(user_id)
+    if res["statusCode"] == 200:
+        print("User deleted successfully")
+    else:
+        print("Couldn't delete the user, maybe the user does not exist to delete.")
+
     '''
     Function to delete an account
     '''
