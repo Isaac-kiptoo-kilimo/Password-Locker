@@ -97,7 +97,7 @@ def main():
                 print(f"{search_account.first_name} {search_account.last_name}")
                 print('-' * 20)
 
-                print(f"Phone number.......{search_account.username}")
+                print(f"Username.......{search_account.username}")
                 print(f"Email address.......{search_account.email}")
 
             else:
