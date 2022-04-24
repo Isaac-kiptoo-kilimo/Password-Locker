@@ -7,6 +7,12 @@ from credentials import Credentials
 from commands import commands, getCommand
 
 
+def printCommands():
+    print("Enter the following commands to use this app. ")
+    for index, command in enumerate(commands):
+        print(f"{index + 1}.", f"\'{command['command']}\'", f"{command['type']} - {command['description']}")
+    print("\n\nGET STARTED.")
+
 def createUser():
     fullname = input("Enter fullname:   ")
     username = input("Enter username:   ")
