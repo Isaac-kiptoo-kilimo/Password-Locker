@@ -208,70 +208,55 @@ def main():
     # print(f"Hello {user_name}. what would you like to do?")
     # print("\n")
 
-    while True:
-        print("Use these short codes : ca - create a new account,gp -generate new password ,cpg - get generated password by computor, da - display accounts,dp -display old password, fa -find an account, ex -exit the account list ")
-        
-        short_code=input().lower()
-        if short_code== 'ca':
-            print('New Account')
-            print('-'*15)
+    while running:
+        com = getCommand(command)
+        if com:
+            if command == 'nc':
+                command = input("Enter command to continue:    ")
 
-            print('First Name....')
-            f_name=input()
+            elif command == 'cu':
+                createUser()
 
-            print("Last Name....")
-            l_name=input()
+            elif command == 'lu':
+                listUsers()
 
-            print("Username ....")
-            username_=input()
+            elif command == 'du':
+                deleteUser()
 
-            print("Email ....")
-            email_=input()
+            elif command == 'au':
+                loginUser()
 
-            print("Password ....")
-            password_=input()
+            elif command == 'aua':
+                logoutUser()
 
-            save_accounts(create_account(f_name,l_name,username_,email_,password_)) # create and save new account.
-            print ('\n')
-            print(f"New account {f_name} {l_name} created")
-            print ('\n')
+            elif command == 'glu':
+                getLoggedInUser()
 
-        elif short_code=="da":
-            if display_accounts():
-                print("Here is the list of all your accounts..")
-                print("\n")
+            elif command == 'lc':
+                listAllCredentials()
 
-                for account in display_accounts():
-                     print(f"{account.first_name} {account.last_name}{account.email} ...{account.username}")
-                     print('\n')
+            elif command == 'gluc':
+                listLoggedInUserCredentials()
 
+            elif command == 'cc':
+                createCredential()
+
+            elif command == 'dc':
+                deleteCredential()
+
+            elif command == 'h':
+                printCommands()
+
+            elif command == 'q':
+                running = False
+                break
             else:
-                print('\n')
-                print("You dont seem to have any accounts yet")
-                print('\n')
+                print("Command not found")
 
-        elif short_code=="fa":
-            print("Enter the username you want to search")
-            search_username=input()
-
-            if check_existing_accounts(search_username):
-                search_account = find_account(search_username)
-                print(f"{search_account.first_name} {search_account.last_name}")
-                print('-' * 20)
-
-                print(f"Username.......{search_account.username}")
-                print(f"Email address.......{search_account.email}")
-
-            else:
-                print("That contact does not exist")
-
-        elif short_code=="ex":
-            print("Thank you,byee.....")
-            break
-        
+            command = input("\nType command to continue:    ")
         else:
-            print("I really didn't get that. Please use the short codes")
-
+            print("Command not found. Type 'h' to get help")
+            command = input("\nEnter a valid command to continue:    ")
 
 if __name__=="__main__":
     main()
