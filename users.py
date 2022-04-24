@@ -27,7 +27,7 @@ class User:
         self.pasaword=password
         self.email=email
 
-        pass
+        # pass
 
     @classmethod
     def createUser(cls, user):
