@@ -27,10 +27,10 @@ def delete_account(account):
 def display_accounts():
     
     return Account.display_accounts()
+
+def check_existing_accounts(username):
     
-def check_existing_contacts(number):
-    
-    return Contact.contact_exist(number)
+    return Account.account_exist(username)
 
 print()
 print('PASSWORD LOCKER APPLICATION')
