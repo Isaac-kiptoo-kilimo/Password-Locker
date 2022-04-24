@@ -24,6 +24,10 @@ def delete_account(account):
     '''
     account.delete_account()
 
+def display_accounts():
+    
+    return Account.display_accounts()
+
 print()
 print('PASSWORD LOCKER APPLICATION')
 print("")
@@ -62,7 +66,20 @@ def main():
             print(f"New account {f_name} {l_name} created")
             print ('\n')
 
-        break
+        elif short_code=="da":
+            if display_accounts():
+                print("Here is the list of all your accounts..")
+                print("\n")
+
+                for account in display_accounts():
+                     print(f"{account.first_name} {account.last_name}{account.email} ...{account.username}")
+                     print('\n')
+
+            else:
+                print('\n')
+                print("You dont seem to have any accounts yet")
+                print('\n')
+                break
         
 
 if __name__=="__main__":
