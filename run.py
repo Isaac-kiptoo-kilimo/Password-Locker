@@ -15,6 +15,26 @@ def createUser():
         "email": email,
         "password": password
     })
+    if res["statusCode"] == 201:
+        print(f"User created successfully with id -> {res['data']['id']}")
+
+def createCredential():
+    res = User.getLoggedInUser()
+    if res["statusCode"] == 200:
+        print(f"Creating new credentials for {res['data']['fullname']}")
+        platform = input("Enter platform:   ")
+        password = input("Enter password:   ")
+        res = Credentials.createCredential({
+            "user": res['data']['id'],
+            "platform": platform,
+            "password": password
+        })
+
+        if res["statusCode"] == 201:
+            print(f"Credential created successfully with id -> {res['data']['id']}")
+    else:
+        print("We can't create create credentials for a non logged in user")
+
 
 def save_accounts(account):
     '''
