@@ -1,6 +1,6 @@
 import unittest
 
-class Account:
+class Credi:
 
     account_list=[]
     def __init__(self,first_name,last_name,username,      
