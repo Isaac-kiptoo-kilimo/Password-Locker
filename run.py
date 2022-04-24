@@ -78,7 +78,42 @@ def delete_account(account):
     '''
     account.delete_account()
 
-def display_accounts():
+def listUsers():
+    max_len = 30
+    id_rem_chars = 10 - len('id')
+    fname_rem_chars = max_len - len('Fullname')
+    username_rem_chars = max_len - len('Fullname')
+    email_rem_chars = max_len - len('Fullname')
+    password_rem_chars = max_len - len('Fullname')
+
+    users = User.users
+    print("\n")
+    print("A list of users within the database")
+    print(f"{'ID'}" + " " * id_rem_chars,
+          f"{'Fullname'}" + " " * fname_rem_chars,
+          f"{'Username'}" + " " * username_rem_chars,
+          f"{'Email'}" + " " * email_rem_chars,
+          f"{'Password'}" + " " * password_rem_chars
+          )
+    print("-" * 120)
+    for user in users:
+        user_id_rem_chars = 10 - len(str(user['id']))
+        user_f_rem_chars = max_len - len(user['fullname'])
+        user_u_rem_chars = max_len - len(user['username'])
+        user_e_rem_chars = max_len - len(user['email'])
+        user_p_rem_chars = max_len - len(user['password'])
+
+        print(f"{user['id']}" + " " * user_id_rem_chars,
+              f"{user['fullname']}" + " " * user_f_rem_chars,
+              f"{user['username']}" + " " * user_u_rem_chars,
+              f"{user['email']}" + " " * user_e_rem_chars,
+              f"{user['password']}" + " " * user_p_rem_chars
+              )
+
+        print("-" * 120)
+
+    print("\n")
+
     
     return Account.display_accounts()
 
