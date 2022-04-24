@@ -75,17 +75,15 @@ def save_accounts(account):
     account.save_account()
 
 def deleteUser():
+    '''
+    Function to delete an account
+    '''
     user_id = input("Enter id of user you want to delete:     ")
     res = User.deleteUser(user_id)
     if res["statusCode"] == 200:
         print("User deleted successfully")
     else:
-        print("Couldn't delete the user, maybe the user does not exist to delete.")
-
-    '''
-    Function to delete an account
-    '''
-    account.delete_account()
+        print("Couldn't delete the user, maybe the user does not exist to delete.")   
 
 def listUsers():
     max_len = 30
@@ -123,8 +121,6 @@ def listUsers():
 
     print("\n")
 
-    
-    return Account.display_accounts()
 
 def loginUser():
     print("\nWelcome to the login page.\nEnter your login details to get authenticated.")
@@ -163,6 +159,26 @@ def getLoggedInUser():
         print(res["message"])
 
 
+def listAllCredentials():
+    tabulariseCredentials("All Credentials", Credentials.credentials)
+
+
+def listLoggedInUserCredentials():
+    res = User.getCredentials()
+    if res["statusCode"] == 200:
+        tabulariseCredentials("All Credentials", res["data"])
+    else:
+        print(res["message"])
+
+
+def deleteCredential():
+    cred_id = input("Enter id of the credential you want to delete:     ")
+    res = Credentials.deleteCredential(cred_id)
+    print(res["message"])
+
+
+def print2emptylines():
+    print("\n")
 
 def find_account(username):
   
