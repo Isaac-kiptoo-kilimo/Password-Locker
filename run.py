@@ -35,6 +35,36 @@ def createCredential():
     else:
         print("We can't create create credentials for a non logged in user")
 
+def tabulariseCredentials(title, creds):
+    max_len = 40
+    id_rem_chars = 20 - len('id')
+    user_rem_chars = 20 - len('User')
+    platform_rem_chars = max_len - len('Platform')
+    pass_rem_chars = max_len - len('Password')
+
+    print("\n")
+    print(title)
+    print(f"{'ID'}" + " " * id_rem_chars,
+          f"{'User'}" + " " * user_rem_chars,
+          f"{'Platform'}" + " " * platform_rem_chars,
+          f"{'Password'}" + " " * pass_rem_chars
+          )
+    print("-" * 120)
+    for cred in creds:
+        cred_id_rem_chars = 20 - len(str(cred['id']))
+        cred_u_rem_chars = 20 - len(str(cred['user']))
+        cred_p_rem_chars = max_len - len(cred['platform'])
+        cred_pass_rem_chars = max_len - len(cred['password'])
+
+        print(f"{cred['id']}" + " " * cred_id_rem_chars,
+              f"{cred['user']}" + " " * cred_u_rem_chars,
+              f"{cred['platform']}" + " " * cred_p_rem_chars,
+              f"{cred['password']}" + " " * cred_pass_rem_chars,
+              )
+
+        print("-" * 120)
+
+    print("\n")
 
 def save_accounts(account):
     '''
