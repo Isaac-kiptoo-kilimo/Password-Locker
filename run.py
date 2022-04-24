@@ -1,9 +1,10 @@
 #!/usr/bin/python3.8
 
-import email
+# import email
 # from details import Account
 from users import User
 from credentials import Credentials
+from commands import commands, getCommand
 
 
 def createUser():
@@ -68,11 +69,11 @@ def tabulariseCredentials(title, creds):
 
     print("\n")
 
-def save_accounts(account):
-    '''
-    Function to save the new account
-    '''
-    account.save_account()
+# def save_accounts(account):
+#     '''
+#     Function to save the new account
+#     '''
+#     account.save_account()
 
 def deleteUser():
     '''
@@ -180,23 +181,26 @@ def deleteCredential():
 def print2emptylines():
     print("\n")
 
-def find_account(username):
+# def find_account(username):
   
-    return Account.find_by_username(username)
+#     return Account.find_by_username(username)
 
-def check_existing_accounts(username):
+# def check_existing_accounts(username):
     
-    return Account.account_exist(username)
+#     return Account.account_exist(username)
 
 print()
 print('PASSWORD LOCKER APPLICATION')
 print("")
 
 def main():
-    print("Hello welcome,Enter your name to create an account")
-    user_name=input()
-    print(f"Hello {user_name}. what would you like to do?")
-    print("\n")
+    running = True
+    printCommands()
+    command = input("\nEnter command to continue:    ")
+    # print("Hello welcome,Enter your name to create an account")
+    # user_name=input()
+    # print(f"Hello {user_name}. what would you like to do?")
+    # print("\n")
 
     while True:
         print("Use these short codes : ca - create a new account,gp -generate new password ,cpg - get generated password by computor, da - display accounts,dp -display old password, fa -find an account, ex -exit the account list ")
