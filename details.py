@@ -27,3 +27,11 @@ class Account:
         for account in cls.accounts_list:
             if account.username == username:
                 return account
+
+    @classmethod
+    def account_exist(cls,username):
+
+        for account in cls.account_list:
+            if account.username == username:
+                return True
+        return False
