@@ -1,16 +1,20 @@
 #!/usr/bin/python3.8
 
-
 import email
 from details import Account
 
 
-def create_account(fname,lname,username,password,email):
-    '''
-    Function to create a new account
-    '''
-    new_account =Account(fname,lname,username,password,email)
-    return new_account
+def createUser():
+    fullname = input("Enter fullname:   ")
+    username = input("Enter username:   ")
+    email = input("Enter email:     ")
+    password = input("Enter password:   ")
+    res = User.createUser({
+        "username": username,
+        "fullname": fullname,
+        "email": email,
+        "password": password
+    })
 
 def save_accounts(account):
     '''
