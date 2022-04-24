@@ -91,6 +91,7 @@ def main():
         elif short_code=="fa":
             print("Enter the username you want to search")
             search_username=input()
+
             if check_existing_accounts(search_username):
                 search_account = find_account(search_username)
                 print(f"{search_account.first_name} {search_account.last_name}")
@@ -98,7 +99,13 @@ def main():
 
                 print(f"Phone number.......{search_account.username}")
                 print(f"Email address.......{search_account.email}")
-                break
+
+            else:
+                print("That contact does not exist")
+
+        elif short_code=="ex":
+            print("Thank you,byee.....")
+            break
         
         else:
             print("I really didn't get that. Please use the short codes")
