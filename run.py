@@ -11,6 +11,9 @@ chars="abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ123456789!@#$&"
 
 
 def printCommands():
+    '''
+    printCommands method is to enable the user navigate around the application
+    '''
     print("Enter the following commands to use this app. ")
     for index, command in enumerate(commands):
         print(f"{index + 1}.", f"\'{command['command']}\'", f"{command['type']} - {command['description']}")
@@ -169,6 +172,9 @@ def logoutUser():
 
 
 def getLoggedInUser():
+    '''
+    getLoggedInUser method is to retrive list of logged in users
+    '''
     res = User.getLoggedInUser()
     if res["statusCode"] == 200:
         print2emptylines()
@@ -210,13 +216,6 @@ def deleteCredential():
 def print2emptylines():
     print("\n")
 
-# def find_account(username):
-  
-#     return Account.find_by_username(username)
-
-# def check_existing_accounts(username):
-    
-#     return Account.account_exist(username)
 
 print()
 print('PASSWORD LOCKER APPLICATION')

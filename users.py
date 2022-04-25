@@ -1,4 +1,5 @@
 import unittest
+# import pyperclip
 
 from credentials import Credentials
 class User:
@@ -20,9 +21,10 @@ class User:
         },
 
     ]
+    # Default values in the list
 
     loggedInUser = None
-    
+
     def __init__(self,id,fullname,username,email,password):
         self.id=id
         self.fullname=fullname
@@ -42,6 +44,9 @@ class User:
 
     @classmethod
     def createUser(cls, user):
+        '''
+        createUser method creates new user objects into users
+        '''
         count = len(cls.users)
         if count > 0:
             id_ = cls.users[count - 1]['id'] + 1
@@ -53,6 +58,9 @@ class User:
 
     @classmethod
     def deleteUser(cls, user_id):
+        '''
+        deleteUser method deletes a saved user from the users list
+        '''
         res = cls.getUser(user_id)
         if res["statusCode"] == 200:
             cls.users.remove(res['data'])
@@ -66,6 +74,9 @@ class User:
 
     @classmethod
     def authenticateUser(cls, credentials):
+        '''
+        authenticatorUser method enables the user verify the information before getting logged in
+        '''
         if credentials['username'] and credentials['password']:
             for user in cls.users:
                 if user['username'] == credentials['username']:
@@ -78,6 +89,9 @@ class User:
 
     @classmethod
     def unAuthenticateUser(cls):
+        '''
+        unAuthenticatorUser method is used to prevent unlogged user access information
+        '''
         cls.loggedInUser = None
         return {"message": "User logged out successfully", "data": None, "statusCode": 200}
 
@@ -90,6 +104,9 @@ class User:
 
     @classmethod
     def getLoggedInUser(cls):
+        '''
+        getLoggedInUser method is to retrive list of logged in users
+        '''
         if cls.loggedInUser:
             return {"message": "A user is logged in", "data": cls.loggedInUser, "statusCode": 200}
         return {"message": "There is no logged in User", "data": None, "statusCode": 403}

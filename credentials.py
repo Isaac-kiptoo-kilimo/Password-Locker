@@ -24,6 +24,9 @@ class Credentials:
 
     @classmethod
     def createCredential(cls, credential):
+        '''
+        function that will be used to create platform credentials
+        '''
         count = len(cls.credentials)
         if count > 0:
             id_ = cls.credentials[count - 1]['id'] + 1
@@ -33,20 +36,23 @@ class Credentials:
         cls.credentials.append(credential)
         return {"message": "Credential created successfully", "data": credential, "statusCode": 201}
 
-    @classmethod
-    def generated_password(cls,range):
-        password_len=int(10)
-        password_count=int(1)
-        for x in range(0,password_count):
-            password=""
-            for x in range(0,password_len):
-                password_char=random.choice(chars)
-                password1=password + password_char
-                cls.range.append(password1)
-        return {"message": "password generated successfully", "data": range, "statusCode": 200}
+    # @classmethod
+    # def generated_password(cls,range):
+    #     password_len=int(10)
+    #     password_count=int(1)
+    #     for x in range(0,password_count):
+    #         password=""
+    #         for x in range(0,password_len):
+    #             password_char=random.choice(chars)
+    #             password1=password + password_char
+    #             cls.range.append(password1)
+    #     return {"message": "password generated successfully", "data": range, "statusCode": 200}
 
     @classmethod
     def getCredential(cls, cred_id):
+        '''
+        Method that takes in a id and returns a credentials that matches that id.
+        '''
         for cred in cls.credentials:
             if cred["id"] == int(cred_id):
                 return {"message": "Credential found", "data": cred, "statusCode": 200}
@@ -54,6 +60,9 @@ class Credentials:
     
     @classmethod
     def getUserCredentials(cls, user_id):
+        '''
+        Method that takes in a id and returns a credentials that matches that id.
+        '''
         creds = []
         for cred in cls.credentials:
             if cred["user"] == int(user_id):
@@ -63,6 +72,9 @@ class Credentials:
 
     @classmethod
     def deleteCredential(cls, cred_id):
+        '''
+        deleteCredential method deletes a stored data of the credentials from the credentials list
+        '''
         res = cls.getCredential(cred_id)
         if res["statusCode"] == 200:
             cls.credentials.remove(res['data'])
