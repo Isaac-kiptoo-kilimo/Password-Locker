@@ -1,33 +1,42 @@
 import unittest
+
 from credentials import Credentials
 class User:
 
     users = [
         {
             "id": 1,
-            "fullname": "Dalmas Ogembo",
-            "username": "dalmasonto",
-            "email": "dalmasogembo@gmail.com",
-            "password": "password"
-        },
-        {
-            "id": 2,
             "fullname": "Isaac Kiptoo",
             "username": "isaac",
             "email": "isaac@gmail.com",
             "password": "password"
         },
+        {
+            "id": 2,
+            "fullname": "Hughes Mugera",
+            "username": "Hmugera",
+            "email": "Hmugera@gmail.com",
+            "password": "password"
+        },
 
     ]
 
-    def __init__(self,id,fullname,username,password,email):
+    def __init__(self,id,fullname,username,email,password):
         self.id=id
         self.fullname=fullname
         self.username=username
-        self.pasaword=password
         self.email=email
+        self.password=password
 
         # pass
+
+    def saveUser(self):
+
+        '''
+        save_user method saves user objects into users
+        '''
+
+        User.users.append(self)
 
     @classmethod
     def createUser(cls, user):
@@ -84,6 +93,18 @@ class User:
         return {"message": "There is no logged in User", "data": None, "statusCode": 403}
 
     @classmethod
+    def listUsers():
+        User.users
+    # max_len = 30
+    # id_rem_chars = 10 - len('id')
+    # fname_rem_chars = max_len - len('Fullname')
+    # username_rem_chars = max_len - len('Fullname')
+    # email_rem_chars = max_len - len('Fullname')
+    # password_rem_chars = max_len - len('Fullname')
+
+    
+
+    @classmethod
     def getCredentials(cls):
         if cls.loggedInUser:
             creds = Credentials.getUserCredentials(cls.loggedInUser["id"])
@@ -92,4 +113,4 @@ class User:
             return {"message": "No logged in user", "data": None, "statusCode": 404}
 
    
-print(User)
+# print(User)

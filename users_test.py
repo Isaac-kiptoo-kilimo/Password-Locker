@@ -6,39 +6,35 @@ from users import User
 class UserTest(unittest.TestCase):
 
     def setUp(self):
-        self.new_account=User("Isaac","limo","isoo","0721jk","isaac@gmail.com")
+        self.new_user=User("1","Isaac kiptoo","isoo","isaac@gmail.com","111100")
 
 
     def test_init(self):
-        self.assertEqual(self.new_account.first_name,"Isaac")
-        self.assertEqual(self.new_account.last_name,"limo")
-        self.assertEqual(self.new_account.username,"isoo")
-        self.assertEqual(self.new_account.password,"0721jk")
-        self.assertEqual(self.new_account.email,"isaac@gmail.com")
-    def test_save_account(self):
-        self.new_account.save_account() # saving the new contact
-        self.assertEqual(len(User.account_list),1)
-        # print(Detail.account_list)
+        self.assertEqual(self.new_user.id,"1")
+        self.assertEqual(self.new_user.fullname,"Isaac kiptoo")
+        self.assertEqual(self.new_user.username,"isoo")
+        self.assertEqual(self.new_user.email,"isaac@gmail.com")
+        self.assertEqual(self.new_user.password,"111100")
+
+
+    def test_saveUser(self):
+        self.new_user.saveUser() # saving the new user
+        self.assertEqual(len(User.users),1)
+        
 
     def tearDown(self):
-        User.account_list=[]
+        User.users=[]
     
-    def test_save_multiple_account(self):
-        self.new_account.save_account()
-        test_account=User("Test","user","user_","0712345678","test@user.com")
-        test_account.save_account()
-        self.assertEqual(len(User.account_list),2)
 
+    def test_deleteUser(self):
+        self.new_user.saveUser()
+        test_user=User("1","user","user_","test@user.com","0712345678",)
+        test_user.saveUser()
+        self.new_user.deleteUser()
+        self.assertEqual(len(User.users),1)
 
-    def test_delete_account(self):
-        self.new_account.save_account()
-        test_account=User("Test","user","user_","0712345678","test@user.com")
-        test_account.save_account()
-        self.new_account.delete_account()
-        self.assertEqual(len(User.account_list),1)
-
-    def test_display_account(self):
-        self.assertEqual(User.display_accounts(),User.account_list)
+    def test_listUsers(self):
+        self.assertEqual(User.listUsers(),User.users)
 
 
 if __name__=="__main__":
