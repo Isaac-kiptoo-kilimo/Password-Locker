@@ -6,8 +6,9 @@ import random
 from users import User
 from credentials import Credentials
 from commands import commands, getCommand
+import uuid
 
-chars="abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ123456789!@#$&"
+# chars="abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ123456789!@#$&"
 
 
 def printCommands():
@@ -39,14 +40,25 @@ def createCredential():
         print(f"Creating new credentials for {res['data']['fullname']}")
         platform = input("Enter platform:   ")
         password_len=int(10)
-        password_count=int(1)
-        for x in range(0,password_count):
-            password=""
-            for x in range(0,password_len):
-                password_char=random.choice(chars)
-                password=password + password_char
+        gen_pass=str(uuid.uuid4())[:8]
+        password=""
+        # for x in range(0,password_len):
+            # password_char=random.choice(chars)
+            # gen_pass=gen_pass + password_char
         # print("Here is your password:",password)
-        password = input(f"Enter password: {password}  ")
+        print("choose password option")
+        
+        print("1.Enter your own password")
+        print("2.Let the sytem choose for you")
+        p_=input("Enter option;     ")
+        if p_=="":
+            print("Enter a valid option")
+            p_=input("Enter option;     ")
+        
+        if p_=="1":
+            password=input(f"Enter password:   ")
+        elif p_=="2":
+            password=gen_pass
         res = Credentials.createCredential({
         "user": res['data']['id'],
         "platform": platform,
@@ -59,9 +71,9 @@ def createCredential():
         print("We can't create create credentials for a non logged in user")
 
 def tabulariseCredentials(title, creds):
-    max_len = 40
-    id_rem_chars = 20 - len('id')
-    user_rem_chars = 20 - len('User')
+    max_len = 20
+    id_rem_chars = 10 - len('id')
+    user_rem_chars = 10 - len('User')
     platform_rem_chars = max_len - len('Platform')
     pass_rem_chars = max_len - len('Password')
 
@@ -72,10 +84,10 @@ def tabulariseCredentials(title, creds):
           f"{'Platform'}" + " " * platform_rem_chars,
           f"{'Password'}" + " " * pass_rem_chars
           )
-    print("-" * 120)
+    print("-" * 80)
     for cred in creds:
-        cred_id_rem_chars = 20 - len(str(cred['id']))
-        cred_u_rem_chars = 20 - len(str(cred['user']))
+        cred_id_rem_chars = 10 - len(str(cred['id']))
+        cred_u_rem_chars = 10 - len(str(cred['user']))
         cred_p_rem_chars = max_len - len(cred['platform'])
         cred_pass_rem_chars = max_len - len(cred['password'])
 
@@ -85,7 +97,7 @@ def tabulariseCredentials(title, creds):
               f"{cred['password']}" + " " * cred_pass_rem_chars,
               )
 
-        print("-" * 120)
+        print("-" * 80)
 
     print("\n")
 

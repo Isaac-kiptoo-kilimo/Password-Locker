@@ -2,6 +2,7 @@
 import unittest
 
 from users import User
+from credentials import Credentials
 
 class UserTest(unittest.TestCase):
     '''
@@ -49,11 +50,8 @@ class UserTest(unittest.TestCase):
         '''
         test_deleteUser to test if we can remove a user from our users list
         '''
-        user_id=1
-        self.new_user.getUser(user_id)
-        test_user=User("1","user","user_","test@user.com","0712345678",)
-        test_user.getUser(user_id)
-        self.new_user.deleteUser()
+        # self.new_user.getUser()
+        self.new_user=User.deleteUser()
         self.assertEqual(len(User.users),1)
 
     # def test_listUsers(self):
