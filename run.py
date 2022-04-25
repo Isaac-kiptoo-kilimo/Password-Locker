@@ -2,9 +2,12 @@
 
 # import email
 # from details import Account
+import random
 from users import User
 from credentials import Credentials
 from commands import commands, getCommand
+
+chars="abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ123456789!@#$&"
 
 
 def printCommands():
@@ -32,11 +35,19 @@ def createCredential():
     if res["statusCode"] == 200:
         print(f"Creating new credentials for {res['data']['fullname']}")
         platform = input("Enter platform:   ")
-        password = input("Enter password:   ")
+        password_len=int(10)
+        password_count=int(1)
+        for x in range(0,password_count):
+            password=""
+            for x in range(0,password_len):
+                password_char=random.choice(chars)
+                password=password + password_char
+        # print("Here is your password:",password)
+        password = input(f"Enter password: {password}  ")
         res = Credentials.createCredential({
-            "user": res['data']['id'],
-            "platform": platform,
-            "password": password
+        "user": res['data']['id'],
+        "platform": platform,
+        "password": password
         })
 
         if res["statusCode"] == 201:
@@ -83,7 +94,7 @@ def tabulariseCredentials(title, creds):
 
 def deleteUser():
     '''
-    Function to delete an account
+    Function to delete user
     '''
     user_id = input("Enter id of user you want to delete:     ")
     res = User.deleteUser(user_id)
@@ -101,6 +112,9 @@ def listUsers():
     password_rem_chars = max_len - len('Fullname')
 
     users = User.users
+    '''
+    list of users retrived.
+    '''
     print("\n")
     print("A list of users within the database")
     print(f"{'ID'}" + " " * id_rem_chars,
@@ -130,6 +144,9 @@ def listUsers():
 
 
 def loginUser():
+    '''
+    creating a user login function.
+    '''
     print("\nWelcome to the login page.\nEnter your login details to get authenticated.")
     username = input("Enter your username:      ")
     password = input("Enter your password:      ")
@@ -171,6 +188,9 @@ def listAllCredentials():
 
 
 def listLoggedInUserCredentials():
+    '''
+    creating a list of logged in user credentials in a simple table
+    '''
     res = User.getCredentials()
     if res["statusCode"] == 200:
         tabulariseCredentials("All Credentials", res["data"])
@@ -179,6 +199,9 @@ def listLoggedInUserCredentials():
 
 
 def deleteCredential():
+    '''
+    deleting credentials which you have stored.
+    '''
     cred_id = input("Enter id of the credential you want to delete:     ")
     res = Credentials.deleteCredential(cred_id)
     print(res["message"])

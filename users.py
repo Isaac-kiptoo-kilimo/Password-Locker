@@ -21,6 +21,8 @@ class User:
 
     ]
 
+    loggedInUser = None
+    
     def __init__(self,id,fullname,username,email,password):
         self.id=id
         self.fullname=fullname
@@ -28,7 +30,7 @@ class User:
         self.email=email
         self.password=password
 
-        # pass
+        pass
 
     def saveUser(self):
 
@@ -92,16 +94,9 @@ class User:
             return {"message": "A user is logged in", "data": cls.loggedInUser, "statusCode": 200}
         return {"message": "There is no logged in User", "data": None, "statusCode": 403}
 
-    @classmethod
-    def listUsers():
-        User.users
-    # max_len = 30
-    # id_rem_chars = 10 - len('id')
-    # fname_rem_chars = max_len - len('Fullname')
-    # username_rem_chars = max_len - len('Fullname')
-    # email_rem_chars = max_len - len('Fullname')
-    # password_rem_chars = max_len - len('Fullname')
-
+    # @classmethod
+    # def listUsers():
+    #     User.users
     
 
     @classmethod

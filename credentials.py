@@ -1,4 +1,7 @@
+import random
+chars="abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ123456789!@#$&"
 class Credentials:
+   
     credentials = [
         {
             "id": 1,
@@ -14,8 +17,10 @@ class Credentials:
         }
     ]
 
+
     def __init__(self):
         pass
+
 
     @classmethod
     def createCredential(cls, credential):
@@ -27,6 +32,18 @@ class Credentials:
             credential["id"] = 1
         cls.credentials.append(credential)
         return {"message": "Credential created successfully", "data": credential, "statusCode": 201}
+
+    @classmethod
+    def generated_password(cls,range):
+        password_len=int(10)
+        password_count=int(1)
+        for x in range(0,password_count):
+            password=""
+            for x in range(0,password_len):
+                password_char=random.choice(chars)
+                password1=password + password_char
+                cls.range.append(password1)
+        return {"message": "password generated successfully", "data": range, "statusCode": 200}
 
     @classmethod
     def getCredential(cls, cred_id):
