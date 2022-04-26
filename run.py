@@ -71,6 +71,9 @@ def createCredential():
         print("We can't create create credentials for a non logged in user")
 
 def tabulariseCredentials(title, creds):
+    '''
+    tabularising the credentials of the credentials object
+    '''
     max_len = 20
     id_rem_chars = 10 - len('id')
     user_rem_chars = 10 - len('User')
@@ -119,6 +122,9 @@ def deleteUser():
         print("Couldn't delete the user, maybe the user does not exist to delete.")   
 
 def listUsers():
+    '''
+    getting all users list and user object
+    '''
     max_len = 30
     id_rem_chars = 10 - len('id')
     fname_rem_chars = max_len - len('Fullname')

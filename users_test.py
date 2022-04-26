@@ -38,6 +38,13 @@ class UserTest(unittest.TestCase):
         self.new_user.saveUser() # saving the new user
         self.assertEqual(len(User.users),1)
         
+    def test_createUser(self):
+        '''
+        test_createUser test case to test if the user object is created and appended into
+         the users
+        '''
+        self.new_user.createUser
+        self.assertEqual(len(User.users),2)
 
     def tearDown(self):
         '''
@@ -50,9 +57,15 @@ class UserTest(unittest.TestCase):
         '''
         test_deleteUser to test if we can remove a user from our users list
         '''
-        # self.new_user.getUser()
-        self.new_user=User.deleteUser()
-        self.assertEqual(len(User.users),1)
+        self.test_user=User
+        self.test_user.getUser("user_id")
+        self.new_user.deleteUser("user_id")
+        
+        self.assertEqual(len(User.users),0)
+    
+    def test_authenticateUser(self):
+        test_user=User
+        self.assertEqual()
 
     # def test_listUsers(self):
     #     self.assertEqual(User.listUsers(),User.users)

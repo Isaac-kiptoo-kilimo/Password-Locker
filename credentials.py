@@ -1,4 +1,4 @@
-import random
+# import random
 # chars="abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ123456789!@#$&"
 class Credentials:
    
