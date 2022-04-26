@@ -30,7 +30,7 @@ class Credentials:
         count = len(cls.credentials)
         if count > 0:
             id_ = cls.credentials[count - 1]['id'] + 1
-            credential["id"] = id_
+            # credential["id"] =int(id_)
         else:
             credential["id"] = 1
         cls.credentials.append(credential)

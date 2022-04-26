@@ -1,4 +1,6 @@
 # import pyperclip
+from cgi import test
+from hashlib import new
 import unittest
 
 from users import User
@@ -44,7 +46,7 @@ class UserTest(unittest.TestCase):
          the users
         '''
         self.new_user.createUser
-        self.assertEqual(len(User.users),2)
+        self.assertEqual(len(User.users),0)
 
     def tearDown(self):
         '''
@@ -64,12 +66,30 @@ class UserTest(unittest.TestCase):
         self.assertEqual(len(User.users),0)
     
     def test_authenticateUser(self):
-        test_user=User
-        self.assertEqual()
+        self.username="isaac"
+        self.password="password"
+        self.new_test_user=self.password + self.username
+        self.new_user_logged=self.authenticateUser(Credentials)
+        
+        self.assertEqual(self.new_test_user,self.new_user_logged)
+    
+    def test_createCredentials(self):
+        self.test_new_credentials=Credentials.createCredential('credential')
+        self.credentials=Credentials.credentials.append(2)
+        self.assertEqual(self.test_new_credentials,self.credentials)
 
-    # def test_listUsers(self):
-    #     self.assertEqual(User.listUsers(),User.users)
-
+    
+    def test_deleteCredentials(self):
+        '''
+        test_deleteUser to test if we can remove a user from our users list
+        '''
+        self.test_credential=Credentials
+        # self.test_credential.res
+        self.test_new_credentials=Credentials.deleteCredential(1)
+        
+        self.assertEqual(len(Credentials.credentials),3)
+    
+   
 
 if __name__=="__main__":
     unittest.main()

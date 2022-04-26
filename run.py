@@ -144,7 +144,7 @@ def listUsers():
           f"{'Email'}" + " " * email_rem_chars,
           f"{'Password'}" + " " * password_rem_chars
           )
-    print("-" * 120)
+    print("-" * 80)
     for user in users:
         user_id_rem_chars = 10 - len(str(user['id']))
         user_f_rem_chars = max_len - len(user['fullname'])
@@ -159,7 +159,7 @@ def listUsers():
               f"{user['password']}" + " " * user_p_rem_chars
               )
 
-        print("-" * 120)
+        print("-" * 80)
 
     print("\n")
 
