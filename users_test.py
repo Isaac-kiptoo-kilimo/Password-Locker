@@ -68,13 +68,12 @@ class UserTest(unittest.TestCase):
         self.assertEqual(len(User.users),0)
 
     def test_getLoggedInUser(self):
-        new_getUserCredential=Credentials.createCredential(1)
-        test_new_credentials= Credentials("1","user","0711223344","test@user.com") # new contact
-        test_new_credentials.createCredential(1)
+        test_new_credentials= Credentials() # 
+        test_new_credentials.createCredential(Credentials)
 
         get_credential = Credentials.get_by_id()
 
-        self.assertEqual(get_credential.email,test_new_credentials.id)
+        self.assertEqual(get_credential.id,test_new_credentials.id)
     
     def test_authenticateUser(self):
         self.username="isaac"
@@ -86,8 +85,8 @@ class UserTest(unittest.TestCase):
     
     def test_createCredentials(self):
         self.test_new_credentials=Credentials.createCredential('credential')
-        self.credentials=Credentials.credentials.append(2)
-        self.assertEqual(self.test_new_credentials,self.credentials)
+        self.credentials=Credentials.credentials.append()
+        self.assertEqual(len(self.test_new_credentials),2)
 
     
     def test_deleteCredentials(self):
@@ -98,16 +97,16 @@ class UserTest(unittest.TestCase):
         # self.test_credential.res
         self.test_new_credentials=Credentials.deleteCredential(1)
         
-        self.assertEqual(len(Credentials.credentials),3)
+        self.assertEqual(len(Credentials.credentials),1)
     
     def test_getUserCredentials(self):
-        new_getUserCredential=Credentials.createCredential(1)
-        test_new_credentials= Credentials("1","user","0711223344","test@user.com") # new contact
-        test_new_credentials.createCredential(1)
+        # self.new_getUserCredential=Credentials.createCredential('credential')
+        # test_new_credentials= Credentials.getCredential(1) 
+        # test_new_credentials.createCredential()
 
-        get_credential = Credentials.get_by_id()
+        get_credential = Credentials.getCredential(1)
 
-        self.assertEqual(get_credential.email,test_new_credentials.id)
+        self.assertEqual(len(get_credential),3)
 
 if __name__=="__main__":
     unittest.main()
