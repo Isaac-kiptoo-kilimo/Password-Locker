@@ -3,6 +3,8 @@ from cgi import test
 from hashlib import new
 import unittest
 
+from keyring import get_credential
+
 from users import User
 from credentials import Credentials
 
@@ -64,6 +66,15 @@ class UserTest(unittest.TestCase):
         self.new_user.deleteUser("user_id")
         
         self.assertEqual(len(User.users),0)
+
+    def test_getLoggedInUser(self):
+        new_getUserCredential=Credentials.createCredential(1)
+        test_new_credentials= Credentials("1","user","0711223344","test@user.com") # new contact
+        test_new_credentials.createCredential(1)
+
+        get_credential = Credentials.get_by_id()
+
+        self.assertEqual(get_credential.email,test_new_credentials.id)
     
     def test_authenticateUser(self):
         self.username="isaac"
@@ -89,7 +100,14 @@ class UserTest(unittest.TestCase):
         
         self.assertEqual(len(Credentials.credentials),3)
     
-   
+    def test_getUserCredentials(self):
+        new_getUserCredential=Credentials.createCredential(1)
+        test_new_credentials= Credentials("1","user","0711223344","test@user.com") # new contact
+        test_new_credentials.createCredential(1)
+
+        get_credential = Credentials.get_by_id()
+
+        self.assertEqual(get_credential.email,test_new_credentials.id)
 
 if __name__=="__main__":
     unittest.main()
