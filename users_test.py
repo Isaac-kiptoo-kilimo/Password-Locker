@@ -76,13 +76,26 @@ class UserTest(unittest.TestCase):
         self.assertEqual(len(User.users),0)
     
     def test_authenticateUser(self):
-        self.id=1
-        self.fullname="isaac kiptoo"
-        self.username='isaac'
-        self.email='isaac@gmail.com'
-        self.password='password'
-        self.new_test_user=self.id,self.fullname,self.username,self.email,self.password
-        self.new_user_logged=self.authenticateUser(Credentials)
+        self.new_test_user=[
+        {
+            "id": 1,
+            "fullname": "Isaac Kiptoo",
+            "username": "isaac",
+            "email": "isaac@gmail.com",
+            "password": "password"
+        }
+        ,
+        {
+            "id": 2,
+            "fullname": "Hughes Mugera",
+            "username": "Hmugera",
+            "email": "Hmugera@gmail.com",
+            "password": "password"
+        },
+
+        ]
+        # self.new_test_user=self.id,self.fullname,self.username,self.email,self.password
+        # self.new_user_logged=self.authenticateUser(Credentials)
         
         self.assertEqual(User.users,self.new_test_user)
     
