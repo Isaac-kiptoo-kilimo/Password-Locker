@@ -74,7 +74,7 @@ def tabulariseCredentials(title, creds):
     '''
     tabularising the credentials of the credentials object
     '''
-    max_len = 20
+    max_len = 15
     id_rem_chars = 10 - len('id')
     user_rem_chars = 10 - len('User')
     platform_rem_chars = max_len - len('Platform')
@@ -87,7 +87,7 @@ def tabulariseCredentials(title, creds):
           f"{'Platform'}" + " " * platform_rem_chars,
           f"{'Password'}" + " " * pass_rem_chars
           )
-    print("-" * 80)
+    print("-" * 70)
     for cred in creds:
         cred_id_rem_chars = 10 - len(str(cred['id']))
         cred_u_rem_chars = 10 - len(str(cred['user']))
@@ -100,7 +100,7 @@ def tabulariseCredentials(title, creds):
               f"{cred['password']}" + " " * cred_pass_rem_chars,
               )
 
-        print("-" * 80)
+        print("-" * 70)
 
     print("\n")
 
@@ -125,11 +125,11 @@ def listUsers():
     '''
     getting all users list and user object
     '''
-    max_len = 30
-    id_rem_chars = 10 - len('id')
+    max_len = 15
+    id_rem_chars = 5 - len('id')
     fname_rem_chars = max_len - len('Fullname')
     username_rem_chars = max_len - len('Fullname')
-    email_rem_chars = max_len - len('Fullname')
+    email_rem_chars = max_len - len('Fullname')+6
     password_rem_chars = max_len - len('Fullname')
 
     users = User.users
@@ -144,12 +144,12 @@ def listUsers():
           f"{'Email'}" + " " * email_rem_chars,
           f"{'Password'}" + " " * password_rem_chars
           )
-    print("-" * 80)
+    print("-" * 70)
     for user in users:
-        user_id_rem_chars = 10 - len(str(user['id']))
+        user_id_rem_chars = 5 - len(str(user['id']))
         user_f_rem_chars = max_len - len(user['fullname'])
         user_u_rem_chars = max_len - len(user['username'])
-        user_e_rem_chars = max_len - len(user['email'])
+        user_e_rem_chars = max_len - len(user['email'])+5
         user_p_rem_chars = max_len - len(user['password'])
 
         print(f"{user['id']}" + " " * user_id_rem_chars,
@@ -159,7 +159,7 @@ def listUsers():
               f"{user['password']}" + " " * user_p_rem_chars
               )
 
-        print("-" * 80)
+        print("-" * 70)
 
     print("\n")
 
